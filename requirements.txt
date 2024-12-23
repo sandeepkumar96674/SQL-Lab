@@ -1,6 +1,6 @@
 sqlalchemy==2.0.15
 setuptools==65.0.0
 numpy>=1.25 --only-binary :all:
-pandas==1.5.3 --only-binary :all:
+pandas>=2.2.3
 streamlit
 
