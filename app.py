@@ -1,11 +1,16 @@
 import sqlite3
 import pandas as pd
 import streamlit as st
+import os
 
 # Initialize database with multiple tables and sample data
 def init_db():
-    conn = sqlite3.connect(':memory:', check_same_thread=False)  # Add check_same_thread=False
+    db_file = "database.db"
+    if os.path.exists(db_file):
+        os.remove(db_file)  # Remove old database to restore fresh data
+    conn = sqlite3.connect(db_file)  # Persistent database file
     cursor = conn.cursor()
+    
     # Create tables with primary and foreign keys
     cursor.execute("""
     CREATE TABLE Customers (
@@ -15,7 +20,6 @@ def init_db():
         Country TEXT
     )
     """)
-
     cursor.execute("""
     CREATE TABLE Orders (
         OrderID INTEGER PRIMARY KEY,
@@ -25,7 +29,6 @@ def init_db():
         FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
     )
     """)
-
     cursor.execute("""
     CREATE TABLE Products (
         ProductID INTEGER PRIMARY KEY,
@@ -37,14 +40,12 @@ def init_db():
         FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
     )
     """)
-
     cursor.execute("""
     CREATE TABLE Categories (
         CategoryID INTEGER PRIMARY KEY,
         CategoryName TEXT NOT NULL
     )
     """)
-
     cursor.execute("""
     CREATE TABLE Suppliers (
         SupplierID INTEGER PRIMARY KEY,
@@ -53,7 +54,6 @@ def init_db():
         Country TEXT
     )
     """)
-
     cursor.execute("""
     CREATE TABLE OrderDetails (
         OrderDetailID INTEGER PRIMARY KEY,
