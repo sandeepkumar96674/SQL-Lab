@@ -130,7 +130,7 @@ st.set_page_config(
     page_title="SQL Lab"
 )
 st.title(":red[SQL Lab]")
-st.subheader("You one stop solution to Learn SQL")
+st.subheader("You one stop solution to Practice SQL")
 
 # Initialize or restore database
 if "db_conn" not in st.session_state:
