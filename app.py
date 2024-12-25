@@ -125,7 +125,13 @@ def init_db():
     return conn
 
 # Streamlit App
-st.title("Interactive SQL Query Editor")
+
+st.set_page_config(
+    page_title="SQL Lab",
+    page_icon="📊"
+)
+st.title(":red[SQL Lab]")
+st.subheader("You one stop solution to Learn SQL")
 
 # Initialize or restore database
 if "db_conn" not in st.session_state:
@@ -156,3 +162,6 @@ if st.button("Show Tables"):
         st.write(tables)
     except Exception as e:
         st.error(f"Error: {e}")
+
+st.caption("Created by :red[Sandeep] ✨")
+
