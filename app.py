@@ -127,8 +127,7 @@ def init_db():
 # Streamlit App
 
 st.set_page_config(
-    page_title="SQL Lab",
-    page_icon="📊"
+    page_title="SQL Lab"
 )
 st.title(":red[SQL Lab]")
 st.subheader("You one stop solution to Learn SQL")
